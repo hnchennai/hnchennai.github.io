@@ -1,0 +1,2 @@
+# app-ads.txt for Chess Coach
+# No ad sellers are authorised yet. The AdMob line is added when the ads version ships.
