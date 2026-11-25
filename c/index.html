@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A friend challenged you to chess</title>
+<meta name="description" content="Install Chess Coach from Google Play, then tap the link again.">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="A friend challenged you to chess">
+<meta property="og:description" content="Install Chess Coach from Google Play, then tap the link again.">
+<meta property="og:image" content="https://hnchennai.github.io/icon.png">
+<meta property="og:type" content="website">
+<link rel="icon" href="/icon.png">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<!-- Friend challenge links (Chess Coach slice FC3): https://hnchennai.github.io/c/?c=<code>. On a phone with the app,
+     Android App Links open the app straight away (.well-known/assetlinks.json) and this page is never seen. Without the app
+     (or when the link opened in a browser anyway) this page shows. The Play button works with no JavaScript. "Open in Chess Coach"
+     appears only when the link carries a valid code: an Android intent link built from ?c= that opens the app when it is
+     installed. No trackers, no third-party requests; the code is never sent anywhere from this page. -->
+<div class="wrap">
+  <header class="top">
+    <img src="/icon.png" alt="" width="44" height="44">
+    <a class="brand" href="/">Chess Coach</a>
+  </header>
+
+  <main>
+    <h1>A friend challenged you to chess</h1>
+    <p class="lead">Install Chess Coach from Google Play, then tap the link again.</p>
+    <div class="actions">
+      <a class="btn primary" href="https://play.google.com/store/apps/details?id=com.suresh.chesscoach">Get Chess Coach on Google Play</a>
+      <a class="btn" id="open" href="/" hidden>Open in Chess Coach</a>
+    </div>
+  </main>
+
+  <footer>
+    <p>Chess Coach. Free software, GPL version 3. <a href="/privacy.html">Privacy policy</a></p>
+  </footer>
+</div>
+<script>
+  (function () {
+    // The same rule as the app (src/js/friends.js parseLink): exactly one c, 10 Crockford base32 characters
+    var m = /^\?(?:.*&)?c=([0-9A-HJKMNP-TV-Z]{10})(?:&|$)/.exec(location.search);
+    if (!m || location.search.split(/[?&]c=/).length !== 2) return;
+    var a = document.getElementById('open');
+    a.href = 'intent://hnchennai.github.io/c/?c=' + m[1] + '#Intent;scheme=https;package=com.suresh.chesscoach;end';
+    a.hidden = false;
+  })();
+</script>
+</body>
+</html>
